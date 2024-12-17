@@ -16,6 +16,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_034944) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -26,4 +28,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_17_034944) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "posts", "users"
 end
